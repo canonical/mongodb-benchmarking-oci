@@ -65,13 +65,3 @@ jobs:
               oci-archive:mongodb-benchmarking-oci_${version}_amd64.rock \
               docker-daemon:ghcr.io/canonical/mongodb-benchmarking:${major_tag_version}
           docker push ghcr.io/canonical/mongodb-benchmarking:${major_tag_version}
-          
-          ### push full version to edge
-          tag_version="${version}-${base}_${{ env.RELEASE }}"
-          echo "Publishing mongodb-benchmarking:${tag_version}"
-          sudo skopeo \
-              --insecure-policy \
-              copy \
-              oci-archive:mongodb-benchmarking-oci_${version}_amd64.rock \
-              docker-daemon:ghcr.io/canonical/mongodb-benchmarking:${tag_version}
-          docker push ghcr.io/canonical/mongodb-benchmarking:${tag_version}
