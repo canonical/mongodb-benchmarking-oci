@@ -16,4 +16,10 @@ RECORD_COUNT=${2:-$RECORD_COUNT_DEFAULT}
 LOAD_THREADS_COUNT=${3:-$LOAD_THREADS_COUNT_DEFAULT}
 MONGODB_URI=${4:-$MONGODB_URI_DEFAULT}
 
-/var/load-testing/ycsb-0.17.0/bin/ycsb load mongodb -s -P "/var/load-testing/ycsb-0.17.0/workloads/$WORKLOAD" -p recordcount=$RECORD_COUNT -threads $LOAD_THREADS_COUNT -p mongodb.url="$MONGODB_URI"
+/var/load-testing/ycsb-0.17.0/bin/ycsb \
+    load mongodb -s \
+    -P "/var/load-testing/ycsb-0.17.0/workloads/$WORKLOAD" \
+    -p recordcount=$RECORD_COUNT \
+    -threads $LOAD_THREADS_COUNT \
+    -p mongodb.url="$MONGODB_URI"
+    
