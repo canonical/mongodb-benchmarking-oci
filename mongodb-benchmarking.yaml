@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-benchmarking 
+  namespace: perf-test
+  labels:
+    app: mongodb-benchmarking
+spec:
+  selector:
+    matchLabels:
+      app: mongodb-benchmarking
+  template:
+    metadata:
+      labels:
+        app: mongodb-benchmarking
+    spec:
+      containers:
+        - name: mongodb-benchmarking
+          image: mongodb-benchmarking:1.0
+
