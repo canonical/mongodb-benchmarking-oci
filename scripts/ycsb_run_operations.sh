@@ -18,4 +18,9 @@ MONGODB_URI=${4:-$MONGODB_URI_DEFAULT}
 
 
 
-/var/load-testing/ycsb-0.17.0/bin/ycsb run mongodb -s -P "/var/load-testing/ycsb-0.17.0/workloads/$WORKLOAD" -p operationcount=$OPERATIONS_COUNT -threads $OPERATIONS_THREADS_COUNT  -p  mongodb.url="$MONGODB_URI"
+/var/load-testing/ycsb-0.17.0/bin/ycsb \
+    run mongodb -s \
+    -P "/var/load-testing/ycsb-0.17.0/workloads/$WORKLOAD" \
+    -p operationcount=$OPERATIONS_COUNT -threads $OPERATIONS_THREADS_COUNT \
+    -p  mongodb.url="$MONGODB_URI"
+    
