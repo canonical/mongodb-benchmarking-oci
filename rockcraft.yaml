@@ -50,7 +50,7 @@ parts:
     plugin: nil
     after: [setup_ycsb]
     stage-packages:
-      - libfuse2*
+      - libfuse2
     override-prime: |
       craftctl default
       cd $CRAFT_PRIME/var/load-testing
