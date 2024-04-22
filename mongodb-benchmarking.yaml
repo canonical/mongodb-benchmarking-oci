@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: mongodb-benchmarking
-          image: ghcr.io/canonical/mongodb-benchmarking:1-edge
+          image: ghcr.io/canonical/mongodb-benchmarking:2-edge
 
 

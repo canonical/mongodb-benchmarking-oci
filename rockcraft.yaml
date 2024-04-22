@@ -4,7 +4,7 @@ name: mongodb-benchmarking-oci  # the name of your ROCK
 base: ubuntu@22.04  # the base environment for this ROCK
 license: Apache-2.0
 
-version: '1.0.1' # just for humans. Semantic versioning is recommended
+version: '2.0' # just for humans. Semantic versioning is recommended
 
 summary: 'Performacnce testing for Charmed MongoDB'
 description: |
@@ -35,6 +35,7 @@ parts:
       - python2
     override-prime: |
       craftctl default
+      apt update -y
       mkdir -p $CRAFT_PRIME/var/load-testing/
     
       chown -R 584788:584788 $CRAFT_PRIME/var/load-testing/
@@ -44,3 +45,14 @@ parts:
       tar xfvz ycsb-0.17.0.tar.gz
       chmod +x $CRAFT_PRIME/bin/ycsb_load_data.sh
       chmod +x $CRAFT_PRIME/bin/ycsb_run_operations.sh
+
+  setup_nb5:
+    plugin: nil
+    after: [setup_ycsb]
+    stage-packages:
+      - libfuse2*
+    override-prime: |
+      craftctl default
+      cd $CRAFT_PRIME/var/load-testing
+      curl -O --location https://github.com/nosqlbench/nosqlbench/releases/download/5.17.9-release/nb5
+      chmod +x nb5
