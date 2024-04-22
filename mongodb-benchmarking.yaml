@@ -20,5 +20,6 @@ spec:
       containers:
         - name: mongodb-benchmarking
           image: ghcr.io/canonical/mongodb-benchmarking:2-edge
+          imagePullPolicy: Always
 
 
